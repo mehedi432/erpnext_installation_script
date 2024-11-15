@@ -142,6 +142,48 @@ Troubleshooting
     Missing Dependencies: If the script fails to install any package, you may need to manually install them or check your internet connection.
 
 
+How to Run the Shell Script
+
+    Save the script: Save the script as install_erpnext.sh on your server.
+
+    Make it executable: After saving the script, make it executable by running the following command:
+
+chmod +x install_erpnext.sh
+
+Run the script: To run the script, provide both the site name and MySQL root password as arguments:
+
+./install_erpnext.sh <site-name> <mysql-root-password>
+
+Example:
+
+    ./install_erpnext.sh myerp.local your_mysql_root_password
+
+    Replace myerp.local with the desired site name, and your_mysql_root_password with your MySQL root password.
+
+What the Shell Script Does
+
+    Installs Required Packages: It installs necessary packages like Git, Python, MariaDB, Redis, Node.js, Yarn, and other dependencies.
+
+    Configures MySQL: Configures MySQL with the given root password and sets up the character set for UTF-8 support.
+
+    Installs Node.js, NPM, and Yarn: Installs Node.js, NPM, and Yarn using nvm.
+
+    Installs Frappe Bench: Installs Frappe Bench and sets up a new site.
+
+    Installs ERPNext: Downloads and installs ERPNext on the created site.
+
+    Sets Up Production: Configures the production environment with NGINX and Supervisor.
+
+    SSL Configuration (Optional): Configures SSL with Certbot for custom domain names.
+
+Additional Notes
+
+    Security Considerations: The script takes the MySQL root password as an argument. Consider using environment variables to avoid passing sensitive information in the command line.
+
+    Firewall Setup: Ensure the required ports are open in your firewall, including 80, 443 (for web access), and others as necessary.
+
+sudo ufw allow 22,25,143,80,443,3306,3022,8000/tcp
+sudo ufw enable
 
 How to Run the Shell Script
 
